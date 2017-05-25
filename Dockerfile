@@ -52,7 +52,10 @@ RUN pip2 install graphviz      && \
     pip  install plotly==2.0.* && \    
     pip2 install opencv-contrib-python==3.2.* && \
     pip  install opencv-contrib-python==3.2.* && \
-    pip2 install skdata    
+    pip2 install skdata        && \ 
+    # pip  install skdata        && \ 
+    pip2 install tqdm          && \ 
+    pip  install tqdm 
 
 USER $NB_USER
 
