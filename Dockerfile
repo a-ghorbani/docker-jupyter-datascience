@@ -55,7 +55,9 @@ RUN pip2 install graphviz      && \
     pip2 install skdata        && \ 
     # pip  install skdata        && \ 
     pip2 install tqdm          && \ 
-    pip  install tqdm 
+    pip  install tqdm          && \
+    pip2 install pydot         && \
+    pip  install pydot
 
 USER $NB_USER
 
