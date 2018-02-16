@@ -34,30 +34,32 @@ RUN conda update  -y conda && \
     conda install -y theano && \
     conda install -y -c conda-forge tensorflow && \
     conda install -y tqdm=4.11.* && \
-    pip   install keras==2.0.4
-    #pip install git+git://github.com/fchollet/keras.git 
+    pip3 install keras==2.1.4 && \
+    pip3 install http://download.pytorch.org/whl/cpu/torch-0.3.1-cp36-cp36m-linux_x86_64.whl && \
+    pip3 install torchvision && \
 
 RUN conda update  -y -n python2 scikit-learn && \
     conda install -y -n python2 theano && \
     conda install -y -n python2 -c conda-forge tensorflow && \
     conda install -y -n python2 pydot && \
     conda install -y -n python2 tqdm=4.11.* && \
-    pip2  install keras==2.0.4
-    #pip2 install git+git://github.com/fchollet/keras.git
+    pip2 install keras==2.1.* && \
+    pip2 install http://download.pytorch.org/whl/cpu/torch-0.3.1-cp27-cp27mu-linux_x86_64.whl && \
+    pip2 install torchvision 
 
 
 RUN pip2 install graphviz      && \
-    pip  install graphviz      && \
-    pip2 install plotly==2.0.* && \    
-    pip  install plotly==2.0.* && \    
-    pip2 install opencv-contrib-python==3.2.* && \
-    pip  install opencv-contrib-python==3.2.* && \
+    pip3 install graphviz      && \
+    pip2 install plotly==2.3.* && \    
+    pip3 install plotly==2.3.* && \    
+    pip2 install opencv-contrib-python==3.4.* && \
+    pip3 install opencv-contrib-python==3.4.* && \
     pip2 install skdata        && \ 
     # pip  install skdata        && \ 
     pip2 install tqdm          && \ 
-    pip  install tqdm          && \
+    pip3 install tqdm          && \
     pip2 install pydot         && \
-    pip  install pydot
+    pip3 install pydot
 
 USER $NB_USER
 
