@@ -39,32 +39,32 @@ RUN conda update  -y conda && \
     conda update  -y scikit-learn && \
     conda install -y theano && \
     conda install -y -c conda-forge tensorflow && \
-    conda install -y tqdm=4.19.* && \
-    pip install keras==2.1.4 && \
-    pip install http://download.pytorch.org/whl/cpu/torch-0.3.1-cp36-cp36m-linux_x86_64.whl && \
+    conda install -y tqdm=4.* && \
+    pip install keras==2.2.* && \
+    pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl && \
     pip install torchvision && \
-    pip install mxnet==1.0.0 && \
+    pip install mxnet==1.2.* && \
     conda clean -tipsy 
 
 RUN conda install -y -n python2 scikit-learn && \
     conda install -y -n python2 theano && \
     conda install -y -n python2 -c conda-forge tensorflow && \
     conda install -y -n python2 pydot && \
-    conda install -y -n python2 tqdm=4.11.* && \
+    conda install -y -n python2 tqdm=4.* && \
     /bin/bash -c "source activate python2 && \
-    pip install keras==2.1.* && \
-    pip install http://download.pytorch.org/whl/cpu/torch-0.3.1-cp27-cp27mu-linux_x86_64.whl && \
+    pip install keras==2.2.* && \
+    pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp27-cp27mu-linux_x86_64.whl && \
     pip install torchvision " 
 
 
 RUN pip  install graphviz      && \
-    pip  install plotly==2.3.* && \    
+    pip  install plotly==3.*   && \    
     pip  install opencv-contrib-python==3.4.* && \
     pip  install tqdm          && \
     pip  install pydot         && \
     /bin/bash -c "source activate python2 && \
     pip  install graphviz      && \
-    pip  install plotly==2.3.* && \    
+    pip  install plotly==3.*   && \    
     pip  install opencv-contrib-python==3.4.* && \
     pip  install tqdm          && \ 
     pip  install pydot         && \
