@@ -14,21 +14,6 @@ RUN apt-get update && apt-get install -y \
   wget \
   graphviz
 
-# # Clone MXNet repo and move into it
-# RUN cd /root && git clone --recursive https://github.com/dmlc/mxnet && cd mxnet && \
-# # Copy config.mk
-#   cp make/config.mk config.mk && \
-# # Set OpenBLAS
-#   sed -i 's/USE_BLAS = atlas/USE_BLAS = openblas/g' config.mk && \
-# # Make 
-#   make -j"$(nproc)"
-# 
-# 
-# # Install Python package
-# RUN cd /root/mxnet/python && \
-#     /opt/conda/bin/python setup.py install && \
-#     /opt/conda/envs/python2/bin/python setup.py install
-
 RUN conda create -y -n python2 python=2 ipykernel && \
     conda clean -tipsy && \
     /bin/bash -c "source activate python2 && \
@@ -40,10 +25,11 @@ RUN conda update  -y conda && \
     conda install -y theano && \
     conda install -y -c conda-forge tensorflow && \
     conda install -y tqdm=4.* && \
-    pip install keras==2.2.* && \
-    pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl && \
-    pip install torchvision && \
-    pip install mxnet==1.2.* && \
+    conda install -y pytorch torchvision cpuonly -c pytorch \
+    pip install keras==2.4.* && \
+    # pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl && \
+    # pip install torchvision && \
+    pip install mxnet==1.7.* && \
     conda clean -tipsy 
 
 RUN conda install -y -n python2 scikit-learn && \
@@ -51,22 +37,21 @@ RUN conda install -y -n python2 scikit-learn && \
     conda install -y -n python2 -c conda-forge tensorflow && \
     conda install -y -n python2 pydot && \
     conda install -y -n python2 tqdm=4.* && \
+    conda install -y -n python2 pytorch torchvision cpuonly -c pytorch \
     /bin/bash -c "source activate python2 && \
-    pip install keras==2.2.* && \
-    pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp27-cp27mu-linux_x86_64.whl && \
-    pip install torchvision " 
+    pip install keras==2.4.* "
 
 
 RUN pip  install graphviz      && \
-    pip  install plotly==3.*   && \    
+    pip  install plotly==4.*   && \
     pip  install opencv-contrib-python==3.4.* && \
     pip  install tqdm          && \
     pip  install pydot         && \
     /bin/bash -c "source activate python2 && \
     pip  install graphviz      && \
-    pip  install plotly==3.*   && \    
-    pip  install opencv-contrib-python==3.4.* && \
-    pip  install tqdm          && \ 
+    pip  install plotly==4.*   && \
+    pip  install opencv-contrib-python==4.4.* && \
+    pip  install tqdm          && \
     pip  install pydot         && \
     pip  install skdata " 
 
